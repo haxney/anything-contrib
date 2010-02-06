@@ -50,7 +50,7 @@
 ;;; History:
 ;; 2009-04-02  taiki
 ;;   * initial release.
-       
+
 ;;; Code:
 
 (eval-when-compile
@@ -74,6 +74,7 @@ See. `anything-yaetags-visit-tags-table'")
 	    (:conc-name anything-yaetags-tagobj->))
   tag tag-info file-label file-path goto-func)
 
+;;;###autoload
 (defvar anything-c-source-yaetags-select
   '((name . "YaETags")
     (init . (anything-yaetags-init))
@@ -86,7 +87,7 @@ See. `anything-yaetags-visit-tags-table'")
   (and tags-file
        (file-exists-p tags-file)
        (file-regular-p tags-file)))
-  
+
 (defun anything-yaetags-visit-tags-table-buffer (tags-file)
   "Visit tags buffer, but disable user prompting."
   (let ((tags-add-tables t)
@@ -108,6 +109,7 @@ Return file path, when TAGS file is found."
       (anything-yaetags-find-tags-file (expand-file-name ".." dir))))))
 
 ;;; unified tags selection
+;;;###autoload
 (defun anything-yaetags-init ()
   "Initialize tag candidates buffer for `anything'."
   (let ((tags-file (anything-yaetags-find-tags-file)))
@@ -117,6 +119,7 @@ Return file path, when TAGS file is found."
 	  (erase-buffer)
 	  (insert-buffer-substring candidates-buffer))))))
 
+;;;###autoload
 (defun anything-yaetags-select (tag)
   "Select candidate TAG.
 If TAG has multiple entries, ask tag of tags to user with `anything'.
@@ -158,8 +161,9 @@ Otherwise goto TAG's declaration."
   (funcall
    (anything-yaetags-tagobj->goto-func tagobj)
    (anything-yaetags-tagobj->tag-info tagobj)))
-  
+
 ;;; tags buffer manipulation
+;;;###autoload
 (defun anything-yaetags-visit-tags-table (tags-file &optional rebuild-p)
   "Open TAGS-FILE and prepare candidates like a `visit-tags-table'.
 Return candidates buffer, if TAGS-FILE is valid."
@@ -241,8 +245,9 @@ We don't use `etags-tags-completion-table', because this function is faster than
 	     tagobj-list)))
 	(forward-line 1))
       (nreverse tagobj-list))))
-      
+
 ;;; find-tag emulation
+;;;###autoload
 (defun anything-yaetags-find-tag (tag)
   "Find TAG's declaration with `anything'."
   (interactive
@@ -250,7 +255,7 @@ We don't use `etags-tags-completion-table', because this function is faster than
 		      (get major-mode 'find-tag-default-function)
 		      'find-tag-default))))
   (anything '(anything-c-source-yaetags-select) tag nil nil tag))
-	    
+
 
 (provide 'anything-yaetags)
 ;;; anything-yaetags.el ends here

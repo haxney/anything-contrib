@@ -264,6 +264,7 @@ If you only use partial dabbrev, eval this sexp:
       (message "Partial match")
       t)))
 
+;;;###autoload
 (defun anything-dabbrev-expand ()
   "The command does dynamic abbrev expansion for multiple selection using `anything'.
 
@@ -337,6 +338,7 @@ It uses ruby because elisp is too slow."
           anything-samewindow)
       (anything nil nil nil nil nil "*anything dabbrev*"))))
 
+;;;###autoload
 (defun anything-dabbrev-find-all-buffers (&rest ignore)
   "Display dabbrev candidates in all buffers."
   (interactive)

@@ -56,7 +56,7 @@
 ;;  http://petdance.com/ack/
 
 
-   
+
 ;;; History:
 
 ;; $Log: anything-grep.el,v $
@@ -292,6 +292,7 @@ Its contents is fontified grep result."
   (run-hooks 'anything-grep-goto-hook))
 
 ;; (@* "simple grep interface")
+;;;###autoload
 (defun anything-grep (command pwd)
   "Run grep in `anything' buffer to narrow results.
 It asks COMMAND for grep command line and PWD for current directory."
@@ -325,6 +326,7 @@ It asks COMMAND for grep command line and PWD for current directory."
 (defvar agbn-last-name nil
   "The last used name by `anything-grep-by-name'.")
 
+;;;###autoload
 (defun anything-grep-by-name (&optional query name)
   "Do `anything-grep' from predefined location.
 It asks NAME for location name and QUERY."

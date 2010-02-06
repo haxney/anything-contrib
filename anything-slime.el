@@ -162,6 +162,7 @@
 
 (defalias 'ascsa-complete 'ascsa-anything-complete)
 
+;;;###autoload
 (defun anything-slime-complete ()
   "Select a symbol from the SLIME's completion systems."
   (interactive)
@@ -194,6 +195,7 @@
         ("Restart" . slime-restart-connection-at-point)
         ("Quit" . slime-quit-connection-at-point)))))
 
+;;;###autoload
 (defun anything-slime-list-connections ()
   "Yet another `slime-list-connections' with `anything'."
   (interactive)
@@ -261,6 +263,7 @@
     anything-c-source-slime-apropos-symbol-all-external-package
     anything-c-source-slime-apropos-symbol-all-package))
 
+;;;###autoload
 (defun anything-slime-apropos ()
   "Yet another `slime-apropos' with `anything'."
   (interactive)
@@ -278,6 +281,7 @@
      . (lambda (cand)
          (slime-repl-history-replace 'backward
                                      (concat "^" (regexp-quote cand) "$"))))))
+;;;###autoload
 (defun anything-slime-repl-history ()
   "Select an input from the SLIME repl's history and insert it."
   (interactive)

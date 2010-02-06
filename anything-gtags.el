@@ -149,6 +149,7 @@
   :group 'anything-gtags
   :type 'boolean)
 
+;;;###autoload
 (defvar anything-c-source-gtags-select
   '((name . "GTAGS")
     (init
@@ -162,6 +163,7 @@
                               (gtags-goto-tag candidate ""))))))
 ;; (setq anything-sources (list anything-c-source-gtags-select))
 
+;;;###autoload
 (defun anything-gtags-select ()
   "Tag jump using gtags and `anything'."
   (interactive)
@@ -287,14 +289,15 @@ If it is other symbol, display file name in candidates even if classification is
                              (buffer-name (ad-get-arg 0))
                                (or (ad-get-arg 0) ""))))
     ad-do-it))
-;; (progn (ad-disable-advice 'switch-to-buffer 'around 'anything-gtags) (ad-update 'switch-to-buffer)) 
+;; (progn (ad-disable-advice 'switch-to-buffer 'around 'anything-gtags) (ad-update 'switch-to-buffer))
 
+;;;###autoload (autoload 'gtags-select-mode "anything-gtags")
 (defadvice gtags-select-mode (around anything-gtags activate)
   "Use `anything' instead of `gtags-select-mode' when `anything-gtags-hijack-gtags-select-mode' is non-nil."
   (if anything-gtags-hijack-gtags-select-mode
       (ag-hijack-gtags-select-mode)
     ad-do-it))
-;; (progn (ad-disable-advice 'gtags-select-mode 'around 'anything-gtags) (ad-update 'gtags-select-mode)) 
+;; (progn (ad-disable-advice 'gtags-select-mode 'around 'anything-gtags) (ad-update 'gtags-select-mode))
 
 (provide 'anything-gtags)
 

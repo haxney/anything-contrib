@@ -123,6 +123,7 @@
 (require 'anything-match-plugin nil t)
 (defvar anything-use-migemo nil
   "[Internal] If non-nil, `anything' is migemo-ized.")
+;;;###autoload
 (defun anything-migemo (with-migemo &rest anything-args)
   "`anything' with migemo extension.
 With prefix arugument, `anything-pattern' is migemo-ized, otherwise normal `anything'."
@@ -152,7 +153,7 @@ With prefix arugument, `anything-pattern' is migemo-ized, otherwise normal `anyt
 (defun anything-compile-source--migemo (source)
   (if (not (featurep 'migemo))
       source
-    (let* ((match-identity-p 
+    (let* ((match-identity-p
             (or (assoc 'candidates-in-buffer source)
                 (equal '(identity) (assoc-default 'match source))))
            (use-match-plugin
@@ -238,7 +239,7 @@ Bind `anything-use-migemo' = t in COMMAND."
            '(anything-compile-source--candidates-in-buffer
              anything-compile-source--migemo))))
       (desc "search-from-end attribute")
-      
+
       (expect '(("FOO" ("日本語入力" "日本語会話")))
         (let ((anything-use-migemo nil))
           (anything-test-candidates '(((name . "FOO")
@@ -265,7 +266,7 @@ Bind `anything-use-migemo' = t in COMMAND."
                                     '(anything-compile-source--candidates-in-buffer
                                       anything-compile-source--migemo))))
       (desc "with anything-match-plugin")
-      
+
       (expect '(("FOO" ("日本語入力")))
         (let ((anything-use-migemo nil))
           (anything-test-candidates '(((name . "FOO")

@@ -49,7 +49,7 @@
 ;;    *Whether to sort completion candidates.
 ;;    default = nil
 ;;  `anything-execute-extended-command-use-kyr'
-;;    *Use `anything-kyr' (context-aware commands) in `anything-execute-extended-command'. 
+;;    *Use `anything-kyr' (context-aware commands) in `anything-execute-extended-command'.
 ;;    default = t
 
 ;; * `anything-lisp-complete-symbol', `anything-lisp-complete-symbol-partial-match':
@@ -71,7 +71,7 @@
 ;; (add-to-list 'load-path (expand-file-name "~/elisp"))
 ;;
 ;; Then install dependencies.
-;; 
+;;
 ;; Install anything-match-plugin.el (must).
 ;; M-x install-elisp http://www.emacswiki.org/cgi-bin/wiki/download/anything-match-plugin.el
 ;;
@@ -461,12 +461,12 @@ used by `anything-lisp-complete-symbol-set-timer' and `anything-apropos'"
 
 (defcustom anything-complete-sort-candidates nil
   "*Whether to sort completion candidates."
-  :type 'boolean  
+  :type 'boolean
   :group 'anything-complete)
 
 (defcustom anything-execute-extended-command-use-kyr t
   "*Use `anything-kyr' (context-aware commands) in `anything-execute-extended-command'. "
-  :type 'boolean  
+  :type 'boolean
   :group 'anything-complete)
 (defun alcs-sort-maybe (candidates source)
   (if anything-complete-sort-candidates
@@ -623,6 +623,7 @@ used by `anything-lisp-complete-symbol-set-timer' and `anything-apropos'"
               (if anything-lisp-complete-symbol-add-space-on-startup " " ""))
     ""))
 
+;;;###autoload
 (defun anything-lisp-complete-symbol (update)
   "`lisp-complete-symbol' replacement using `anything'."
   (interactive "P")
@@ -633,6 +634,8 @@ used by `anything-lisp-complete-symbol-set-timer' and `anything-apropos'"
   (interactive "P")
   (anything-lisp-complete-symbol-1 update anything-lisp-complete-symbol-sources
                                    (alcs-initial-input t)))
+
+;;;###autoload
 (defun anything-apropos (update)
   "`apropos' replacement using `anything'."
   (interactive "P")
@@ -894,7 +897,7 @@ It accepts one argument, selected candidate.")
   (defalias 'anything-old-read-variable (symbol-function 'read-variable))
   (defalias 'anything-old-read-command (symbol-function 'read-command))
   (put 'anything-read-string-mode 'orig-read-buffer-function read-buffer-function))
-  
+
 ;; (anything-read-string-mode -1)
 ;; (anything-read-string-mode 1)
 ;; (anything-read-string-mode 0)
@@ -927,6 +930,7 @@ It accepts one argument, selected candidate.")
 
 
 ;; (@* " shell history")
+;;;###autoload
 (defun anything-complete-shell-history ()
   "Select a command from shell history and insert it."
   (interactive)
@@ -1006,6 +1010,7 @@ It accepts one argument, selected candidate.")
      (persistent-action . alcs-describe-function))))
 
 ;; (with-current-buffer " *command symbols*" (erase-buffer))
+;;;###autoload
 (defun anything-execute-extended-command ()
   (interactive)
   (setq alcs-this-command this-command)
@@ -1026,6 +1031,7 @@ It accepts one argument, selected candidate.")
         (call-interactively cmd)))))
 
 (defvar anything-find-file-additional-sources nil)
+;;;###autoload
 (defun anything-find-file ()
   (interactive)
   (let ((anything-map (anything-read-file-name-map))
@@ -1044,7 +1050,7 @@ It accepts one argument, selected candidate.")
 
 (add-hook 'after-init-hook 'alcs-make-candidates)
 
-      
+
 ;;;; unit test
 ;; (install-elisp "http://www.emacswiki.org/cgi-bin/wiki/download/el-expectations.el")
 ;; (install-elisp "http://www.emacswiki.org/cgi-bin/wiki/download/el-mock.el")

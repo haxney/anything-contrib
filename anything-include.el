@@ -7,17 +7,17 @@
 ;;
 ;; For C and C++.
 ;;
-;; Anything-source made maintenance of history of #include and reusable. 
+;; Anything-source made maintenance of history of #include and reusable.
 ;;
 ;; Can it be recorded that #include <..> and #include ".." is copied or is killed in the variable for the history,
-;; and input the supplementation by way of anything. 
+;; and input the supplementation by way of anything.
 ;;
-;; Even if the session cuts, it is reusable because the history is preserved in the file of ~/.anything-include. 
+;; Even if the session cuts, it is reusable because the history is preserved in the file of ~/.anything-include.
 ;;
 
 ;;; How to use:
 ;;
-;; 1. Please add the following descriptions to emacs. 
+;; 1. Please add the following descriptions to emacs.
 ;;
 ;; (require 'anything-include)
 ;;
@@ -32,23 +32,26 @@
 ;;	    anything-c-source-include
 ;;	    ))
 ;;
-;; 3. Please customize the following variables if it is necessary. 
+;; 3. Please customize the following variables if it is necessary.
 ;;
 ;; (setq anything-include-save-file "~/.anything-include")
 ;; (setq anything-include-max-saved-items 100)
 ;;
 
+;;;###autoload
 (defvar anything-include-list nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; anything-source (please add 'anything-sources)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;###autoload
 (defvar anything-c-source-include
   '((name . "#include")
     (candidates . anything-include-list)
     (action . anything-include-insert))
   "")
 
+;;;###autoload
 (defun anything-include-insert (c)
   (insert (concat c "\n"))
   (push c anything-include-list))

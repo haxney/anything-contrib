@@ -1,32 +1,32 @@
-;;; anything-delicious.el --- 
+;;; anything-delicious.el ---
 
 ;; Copyright (C) 2008, 2009 Thierry Volpiatto, all rights reserved
 
 ;; Filename: anything-delicious.el
-;; Description: 
+;; Description:
 ;; Author: thierry
-;; Maintainer: 
-;; URL: 
-;; Keywords: 
-;; Compatibility: 
- 
+;; Maintainer:
+;; URL:
+;; Keywords:
+;; Compatibility:
+
 ;; This program is free software; you can redistribute it and/or
 ;; modify it under the terms of the GNU General Public License as
 ;; published by the Free Software Foundation; either version 3, or
 ;; (at your option) any later version.
-;; 
+;;
 ;; This program is distributed in the hope that it will be useful,
 ;; but WITHOUT ANY WARRANTY; without even the implied warranty of
 ;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 ;; General Public License for more details.
-;; 
+;;
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program; see the file COPYING.  If not, write to
 ;; the Free Software Foundation, Inc., 51 Franklin Street, Fifth
 ;; Floor, Boston, MA 02110-1301, USA.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 
+;;
 ;;; Commentary:
 ;;  ==========
 ;;
@@ -72,9 +72,9 @@
 ;; That should create a "~/.delicious-cache" file.
 ;; (you can set that to another value with `anything-c-delicious-cache-file')
 ;; You can also add `anything-c-source-delicious-tv' to the `anything-sources'.
-;; 
+;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
- 
+
 ;;; Code:
 
 (require 'xml)
@@ -106,7 +106,7 @@
 (defvar anything-c-delicious-cache nil)
 (defvar anything-delicious-last-candidate-to-deletion nil)
 (defvar anything-delicious-last-pattern nil)
-                                     
+
 (defvar anything-c-source-delicious-tv
   '((name . "Del.icio.us")
     (init . (lambda ()
@@ -366,6 +366,7 @@ to Delicious"
                                                   'help-echo (anything-c-delicious-bookmarks-get-value i))))))
     cand-mod))
 
+;;;###autoload
 (defun anything-delicious ()
   "Start anything-delicious outside of main anything"
   (interactive)

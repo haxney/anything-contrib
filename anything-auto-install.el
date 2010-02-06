@@ -174,24 +174,28 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Interactive Functions ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;###autoload
 (defun anything-auto-install-from-emacswiki ()
   "Launch anything with auto-install separately."
   (interactive)
   (anything 'anything-c-source-auto-install-from-emacswiki
             nil nil nil nil anything-auto-install-buffer))
 
+;;;###autoload
 (defun anything-auto-install-from-library ()
   "Update library with `anything'."
   (interactive)
   (anything 'anything-c-source-auto-install-from-library
             nil nil nil nil anything-auto-install-buffer))
 
+;;;###autoload
 (defun anything-auto-install-batch ()
   "Batch install elisp libraries."
   (interactive)
   (anything `anything-c-source-auto-install-batch
             nil nil nil nil anything-auto-install-buffer))
 
+;;;###autoload
 (defun anything-auto-install ()
   "All-in-one command for elisp installation."
   (interactive)

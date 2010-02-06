@@ -164,16 +164,19 @@
                                (emms-add-file candidate)))))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Interactive Functions ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;###autoload
 (defun anything-emms-playlist ()
   "Play EMMS playlist with `anything'."
   (interactive)
   (anything 'anything-c-source-emms-playlist))
 
+;;;###autoload
 (defun anything-emms-directory ()
   "Play EMMS directory with `anything'."
   (interactive)
   (anything 'anything-c-source-emms-directory))
 
+;;;###autoload
 (defun anything-emms-file ()
   "Play EMMS file with `anything'."
   (interactive)
